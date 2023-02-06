@@ -1,0 +1,28 @@
+﻿@model OfferDTO
+<h1 class="display-4 align-content-center">Your offer information:</h1>
+<div class="container p-5 my-5 border border-success rounded">
+    <p><span style="font-weight: bolder">Image: </span></p><img src="@Model.ImageUrl" onerror="this.src='https://cdn2.iconfinder.com/data/icons/interface-part-2/32/question-mark-1024.png';" height="300px" width="300px" class="border img-thumbnail"/>
+    <p></p>
+    <p><span style="font-weight: bolder">Offer Id: </span>@Model.Id</p>
+    <p><span style="font-weight: bolder">Title: </span>@Model.Title</p>
+    <p><span style="font-weight: bolder">Artist:</span> @Model.Artist</p>
+    <p><span style="font-weight: bolder">Year: </span>@Model.Year</p>
+    <p><span style="font-weight: bolder">Can be delivered: </span>@Model.CanBeDelivered</p>
+    <p><span style="font-weight: bolder">Media Type:</span> @Model.MediaType</p>
+    <p><span style="font-weight: bolder">Description:</span> @Model.Description</p>
+</div>
+
+<script>
+$(document).ready(function() {
+  $(".image-container img").each(function(key, item) {
+    $(item).on("error", function() {
+      showDefaultImage(this);
+    }).attr('src', $(item).attr('src'));
+  });
+});
+ 
+function showDefaultImage(img) {
+  $(img).attr('src', 'https://svgshare.com/i/7bo.svg');
+  $(img).off("error");
+}
+</script>
